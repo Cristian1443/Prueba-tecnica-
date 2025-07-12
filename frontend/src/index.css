@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Paleta de colores inspirada en la marca Foodboleros */
+  --primary-color: #D4AF37; /* Un tono dorado/beige para acentos */
+  --primary-hover-color: #C8A42E;
+  --secondary-color: #FFFFFF; /* Blanco para texto y elementos contrastantes */
+  --background-color: #121212; /* Negro como color de fondo principal */
+  --surface-color: #1E1E1E;   /* Un negro ligeramente más claro para superficies */
+  --border-color: #2C2C2C;
+  --text-color: #EAEAEA;
+  --text-color-light: #A0A0A0;
+  --font-family-base: 'Montserrat', sans-serif; /* Una fuente elegante y moderna */
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  --box-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.3);
+  --box-shadow-active: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --border-radius: 6px; /* Un radio ligeramente más sutil */
+  
+  /* Variables de animación */
+  --transition-fast: 0.15s ease-out;
+  --transition-normal: 0.3s ease-out;
+  --transition-slow: 0.5s ease-out;
+  --animation-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --animation-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Estilos globales */
+body {
+  margin: 0;
+  font-family: var(--font-family-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Clases de utilidad para animaciones */
+.fade-in {
+  animation: fadeIn var(--transition-normal) var(--animation-smooth);
+}
+
+.slide-up {
+  animation: slideUp var(--transition-normal) var(--animation-smooth);
+}
+
+.bounce-in {
+  animation: bounceIn var(--transition-slow) var(--animation-bounce);
+}
+
+.scale-hover {
+  transition: transform var(--transition-fast);
+}
+
+.scale-hover:hover {
+  transform: scale(1.02);
+}
+
+.glow-hover {
+  transition: box-shadow var(--transition-normal);
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Animaciones keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Mejoras en elementos interactivos */
+button, .btn, .clickable {
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+button:active, .btn:active {
+  transform: translateY(1px);
+  box-shadow: var(--box-shadow-active);
+}
+
+/* Transiciones de página */
+.page-transition {
+  min-height: 100vh;
+  animation: pageEnter var(--transition-slow) var(--animation-smooth);
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover-color);
+}
+
+/* Mejoras en focus para accesibilidad */
+*:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Mejoras responsive adicionales */
+@media (max-width: 576px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  h1, .h1 {
+    font-size: 1.75rem;
+  }
+  
+  h2, .h2 {
+    font-size: 1.5rem;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Mejoras en la experiencia táctil */
+@media (hover: none) and (pointer: coarse) {
+  .btn:hover {
+    transform: none;
+  }
+  
+  .scale-hover:hover {
+    transform: none;
+  }
+  
+  .btn:active {
+    transform: scale(0.95);
+  }
+}

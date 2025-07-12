@@ -1,0 +1,336 @@
+/* --- Estilos para el Header Mejorado --- */
+.navbar-custom {
+  background-color: var(--background-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-normal);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-custom .navbar-brand {
+  font-weight: 700;
+  color: var(--primary-color);
+  transition: color var(--transition-fast);
+  text-decoration: none;
+}
+
+.navbar-custom .navbar-brand:hover {
+  color: var(--primary-hover-color);
+}
+
+.brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover-color));
+  color: var(--background-color);
+  transition: all var(--transition-normal);
+}
+
+.brand-icon:hover {
+  transform: rotate(10deg) scale(1.1);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.brand-text {
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.navbar-custom .btn-outline-light {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  transition: all var(--transition-fast);
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+}
+
+.navbar-custom .btn-outline-light:hover {
+  color: var(--background-color);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.navbar-subtitle {
+  color: var(--text-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.8;
+  transition: opacity var(--transition-fast);
+}
+
+.navbar-subtitle:hover {
+  opacity: 1;
+}
+
+/* --- Estilos Generales de Componentes --- */
+
+.btn {
+  border-radius: var(--border-radius);
+  transition: all var(--transition-normal);
+  font-weight: 500;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left var(--transition-slow);
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-custom-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover-color));
+  color: var(--background-color);
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.btn-custom-primary:hover, .btn-custom-primary:focus {
+  background: linear-gradient(135deg, var(--primary-hover-color), #B8941F);
+  color: var(--background-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+}
+
+.btn-custom-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.4);
+}
+
+.btn-custom-secondary {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.btn-custom-secondary:hover, .btn-custom-secondary:focus {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--background-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.btn-custom-danger {
+  background: linear-gradient(135deg, #8B0000, #A52A2A);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.2);
+}
+
+.btn-custom-danger:hover, .btn-custom-danger:focus {
+  background: linear-gradient(135deg, #A52A2A, #CD5C5C);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 0, 0, 0.3);
+}
+
+/* Sobreescribir estilos de Bootstrap para botones */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover-color)) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--background-color) !important;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background: linear-gradient(135deg, var(--primary-hover-color), #B8941F) !important;
+  border-color: var(--primary-hover-color) !important;
+  color: var(--background-color) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3) !important;
+}
+
+.card-custom {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--surface-color);
+  box-shadow: var(--box-shadow);
+  transition: all var(--transition-normal);
+}
+
+.card-custom:hover {
+  box-shadow: var(--box-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.login-container {
+  background-color: var(--background-color);
+  animation: fadeIn var(--transition-slow) var(--animation-smooth);
+}
+
+.card-login {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: none;
+  animation: slideUp var(--transition-slow) var(--animation-smooth);
+}
+
+.login-logo {
+  animation: bounceIn var(--transition-slow) var(--animation-bounce);
+}
+
+.login-logo h1 {
+  color: var(--primary-color);
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: color var(--transition-fast);
+}
+
+.login-logo h1:hover {
+  color: var(--primary-hover-color);
+}
+
+.login-subtitle {
+  color: var(--text-color);
+  font-size: 0.9rem;
+  font-weight: 400;
+  opacity: 0.9;
+  transition: opacity var(--transition-fast);
+}
+
+.login-subtitle:hover {
+  opacity: 1;
+}
+
+.login-footer-text small {
+  color: var(--text-color-light);
+  font-size: 0.8rem;
+  transition: color var(--transition-fast);
+}
+
+.login-footer-text:hover small {
+  color: var(--text-color);
+}
+
+.form-control {
+  background-color: #2c2c2c;
+  border: 2px solid #404040;
+  color: var(--text-color);
+  border-radius: var(--border-radius);
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.form-control:focus {
+  background-color: #2c2c2c;
+  border-color: var(--primary-color);
+  color: var(--text-color);
+  box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+  transform: translateY(-1px);
+}
+
+.form-control:hover {
+  border-color: var(--primary-color);
+}
+
+.table {
+  --bs-table-bg: var(--surface-color);
+  --bs-table-border-color: var(--border-color);
+  --bs-table-color: var(--text-color);
+  --bs-table-hover-color: var(--text-color);
+  --bs-table-hover-bg: #2c2c2c;
+  --bs-table-striped-bg: #252525;
+  --bs-table-striped-color: var(--text-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+}
+
+.table thead th {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  font-weight: 600;
+  border-bottom: 2px solid var(--primary-color);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.table tbody tr {
+  transition: all var(--transition-fast);
+}
+
+.table tbody tr:hover {
+  background-color: #2c2c2c !important;
+  transform: scale(1.01);
+}
+
+/* Mejoras para elementos de inventario */
+.inventory-header {
+  animation: slideUp var(--transition-normal) var(--animation-smooth);
+}
+
+.inventory-table {
+  animation: fadeIn var(--transition-slow) var(--animation-smooth);
+}
+
+/* --- Estilos para la tabla responsiva --- */
+@media (max-width: 768px) {
+  .responsive-table tr {
+    border: 1px solid var(--border-color);
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    transition: all var(--transition-fast);
+  }
+  
+  .responsive-table tr:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-hover);
+  }
+}
+
+/* --- Card de producto para móviles --- */
+.product-card {
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  transition: box-shadow var(--transition-normal), transform var(--transition-fast);
+}
+.product-card:hover {
+  box-shadow: var(--box-shadow-hover);
+  transform: translateY(-2px) scale(1.01);
+}
+.product-card .badge {
+  font-size: 0.85rem;
+  padding: 0.4em 0.7em;
+}
+.product-card .btn {
+  font-size: 1rem;
+  padding: 0.5rem 0.5rem;
+}
+@media (max-width: 576px) {
+  .product-card {
+    padding: 0.8rem 0.7rem;
+  }
+  .product-card .btn {
+    font-size: 0.95rem;
+    padding: 0.45rem 0.3rem;
+  }
+}
