@@ -4,8 +4,59 @@
 
 ---
 
-## 📝 Descripción Ejecutiva
-Foodboleros Inventario es una plataforma full-stack desarrollada para digitalizar y optimizar la gestión de inventario en restaurantes. Ofrece una experiencia de usuario moderna, segura y adaptable a cualquier dispositivo, integrando automatización, IA y las mejores prácticas de la industria.
+## 🚀 Guía rápida para iniciar el proyecto
+
+### 1. Clona el repositorio
+```bash
+git clone <URL-del-repo>
+cd foodboleros-inventario
+```
+
+### 2. Configura las variables de entorno
+
+#### Backend (`backend/.env`):
+```
+PORT=3001
+DB_HOST=localhost
+DB_USER=tu_usuario
+DB_PASSWORD=tu_password
+DB_NAME=foodboleros
+JWT_SECRET=tu_clave_secreta
+FRONTEND_URL=http://localhost:5173
+```
+
+#### Frontend (`frontend/.env`):
+```
+VITE_API_URL=http://localhost:3001/api
+```
+
+### 3. Instala las dependencias
+
+#### Backend
+```bash
+cd backend
+npm install
+```
+
+#### Frontend
+```bash
+cd ../frontend
+npm install
+```
+
+### 4. Inicia el backend
+```bash
+cd backend
+npm run dev
+```
+- El backend corre en `http://localhost:3001`
+
+### 5. Inicia el frontend
+```bash
+cd ../frontend
+npm run dev
+```
+- El frontend corre en `http://localhost:5173`
 
 ---
 
@@ -38,40 +89,6 @@ Foodboleros Inventario es una plataforma full-stack desarrollada para digitaliza
 
 ---
 
-## 🚀 Instalación y Despliegue
-
-### 1. Clonar el repositorio
-```bash
-git clone <URL-del-repo>
-cd foodboleros-inventario
-```
-
-### 2. Backend
-```bash
-cd backend
-npm install
-# Configura tu .env (ver .env.example)
-npm run dev
-```
-- Corre en `http://localhost:3001`
-- Requiere MySQL (ver `init.sql`)
-
-### 3. Frontend
-```bash
-cd ../frontend
-npm install
-npm run dev
-```
-- Corre en `http://localhost:5173`
-
-### 4. Pruebas automáticas (backend)
-```bash
-cd backend
-npm test
-```
-
----
-
 ## 📱 Experiencia Mobile-First
 - **Escritorio:** Tabla tradicional, acciones rápidas.
 - **Móvil:** Tarjetas apiladas, botones grandes y accesibles, sin scroll horizontal.
@@ -91,6 +108,7 @@ npm test
 - Autenticación JWT y protección de rutas.
 - Validación de formularios en frontend y backend.
 - Rate limiting y sanitización de entradas.
+- CORS seguro configurado por variable de entorno.
 - Código modular y fácil de mantener.
 
 ---
