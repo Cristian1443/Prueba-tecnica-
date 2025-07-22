@@ -105,8 +105,8 @@ npm test
 ---
 
 ## 👤 Acceso de prueba
-- **Usuario:** admin@foodboleros.com
-- ***Contraseña:** admin123
+- **Usuario:** [proporcionar solo en entorno seguro]
+- **Contraseña:** [proporcionar solo en entorno seguro]
 
 ---
 

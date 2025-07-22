@@ -1,0 +1,53 @@
+/* frontend/src/pages/LoginPage.css */
+
+.login-container {
+    background-color: var(--background-color);
+    animation: fadeIn var(--transition-slow) var(--animation-smooth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  .card-login {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: none;
+    animation: slideUp var(--transition-slow) var(--animation-smooth);
+  }
+  
+  .login-logo {
+    animation: bounceIn var(--transition-slow) var(--animation-bounce);
+  }
+  
+  .login-logo h1 {
+    color: var(--primary-color);
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: color var(--transition-fast);
+  }
+  
+  .login-logo h1:hover {
+    color: var(--primary-hover-color);
+  }
+  
+  .login-subtitle {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: 400;
+    opacity: 0.9;
+    transition: opacity var(--transition-fast);
+  }
+  
+  .login-subtitle:hover {
+    opacity: 1;
+  }
+  
+  .login-footer-text small {
+    color: var(--text-color-light);
+    font-size: 0.8rem;
+    transition: color var(--transition-fast);
+  }
+  
+  .login-footer-text:hover small {
+    color: var(--text-color);
+  }

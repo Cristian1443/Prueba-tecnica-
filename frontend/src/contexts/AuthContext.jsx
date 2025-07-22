@@ -1,66 +1,75 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-// El servicio de autenticación que crearemos en el siguiente paso
-import { login as loginService } from '../services/authService'; 
+import { login as loginService } from '../services/authService';
 import axios from 'axios';
 
-// 1. Crear el Contexto
+
 const AuthContext = createContext(null);
 
-// 2. Crear el Proveedor del Contexto
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(localStorage.getItem('token'));
+  const [loading, setLoading] = useState(true); 
   const navigate = useNavigate();
 
-  useEffect(() => {
+  const verifyAuth = useCallback(async () => {
+    const token = localStorage.getItem('token');
     if (token) {
-      // Si hay un token, lo configuramos en los headers de axios para todas las peticiones futuras
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      // Aquí podrías decodificar el token para obtener info del usuario si lo necesitaras
-      // Por ahora, asumimos que si hay token, el usuario está "logueado"
-      setUser({ token }); 
-    } else {
-      delete axios.defaults.headers.common['Authorization'];
-      setUser(null);
+      try {
+ 
+        setUser({ loggedIn: true }); // Versión simplificada: asumimos que si hay token, está logueado
+      } catch (error) {
+        console.error("Token inválido, limpiando...", error);
+        localStorage.removeItem('token');
+        setUser(null);
+      }
     }
-  }, [token]);
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    verifyAuth();
+  }, [verifyAuth]);
 
   const login = async (email, password) => {
     try {
-      const data = await loginService(email, password);
-      setToken(data.token);
-      localStorage.setItem('token', data.token);
-      navigate('/'); // Redirigir al inventario después del login
+      const { token } = await loginService(email, password);
+      localStorage.setItem('token', token);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      setUser({ loggedIn: true }); // Actualiza el estado del usuario
+      navigate('/');
       toast.success('¡Bienvenido! Sesión iniciada correctamente.');
     } catch (error) {
       console.error('Fallo en el login:', error);
       toast.error('Credenciales incorrectas. Por favor, inténtalo de nuevo.');
-      // Ya no es necesario re-lanzar el error, el toast lo maneja.
-      // throw error; 
+      throw error; // Es buena idea re-lanzar el error por si el componente que llama necesita reaccionar
     }
   };
 
   const logout = () => {
-    setToken(null);
     localStorage.removeItem('token');
+    delete axios.defaults.headers.common['Authorization'];
+    setUser(null);
     toast.info('Sesión cerrada. ¡Hasta pronto!');
-    navigate('/login'); // Redirigir al login
+    navigate('/login');
   };
 
   const value = {
     user,
-    token,
     login,
     logout,
-    isAuthenticated: !!token,
+    isAuthenticated: !!user, // Derivado del estado 'user'
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  // 3. No renderizar la app hasta que la verificación termine
+  return (
+    <AuthContext.Provider value={value}>
+      {loading ? <p>Cargando...</p> : children}
+    </AuthContext.Provider>
+  );
 };
 
-// 3. Crear un hook personalizado para usar el contexto fácilmente
 export const useAuth = () => {
   return useContext(AuthContext);
-}; 
+};

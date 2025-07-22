@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3001/api/chat';
+const API_URL = `${import.meta.env.VITE_API_URL}/chat`;
 
 /**
  * Envía un mensaje al chatbot de la API y obtiene una respuesta.

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// La URL base de tu API. Debería estar en una variable de entorno en un proyecto real.
-const API_URL = 'http://localhost:3001/api/auth';
+// La URL base ahora se toma de las variables de entorno
+const API_URL = `${import.meta.env.VITE_API_URL}/auth`;
 
 /**
  * Llama al endpoint de login de la API.
@@ -15,4 +15,4 @@ export const login = async (email, password) => {
     password,
   });
   return response.data;
-}; 
+};
