@@ -1,5 +1,5 @@
 import pool from '../config/db.js';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 
 /**
  * Busca un usuario por su dirección de email.

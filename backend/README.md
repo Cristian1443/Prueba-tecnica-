@@ -65,3 +65,14 @@ La API se sirve bajo el prefijo `/api`.
 - `PUT /api/productos/:id`: Actualiza un producto (Protegida).
 - `DELETE /api/productos/:id`: Elimina un producto (Protegida).
 - `POST /api/chat`: Envía un mensaje al chatbot de ventas (Protegida). 
+
+# Configuración de variables de entorno para seguridad
+
+Agrega en tu archivo .env del backend:
+
+FRONTEND_URL=http://localhost:5173
+NODE_ENV=production # o development según el entorno
+
+# Explicación
+- FRONTEND_URL: Solo este origen podrá hacer peticiones al backend (CORS seguro).
+- NODE_ENV: Si es 'production', los mensajes de error detallados no se mostrarán al usuario. 

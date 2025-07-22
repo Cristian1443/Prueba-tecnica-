@@ -44,3 +44,13 @@ export const validateLogin = [
   
   handleValidationErrors
 ]; 
+
+// Reglas de validación para el mensaje del chat
+export const validateChatMessage = [
+  body('message')
+    .trim()
+    .notEmpty().withMessage('El mensaje es obligatorio.')
+    .isString().withMessage('El mensaje debe ser texto.')
+    .isLength({ min: 1, max: 500 }).withMessage('El mensaje debe tener entre 1 y 500 caracteres.'),
+  handleValidationErrors
+]; 
